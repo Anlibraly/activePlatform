@@ -11,6 +11,7 @@
 	<meta content="telephone=no" name="format-detection">
 	<meta content="email=no" name="format-detection">
 	<script src="js/angular.min.js"></script>
+	<script src="js/av-mini.js"></script>
 	<script src="js/activity.js"></script>
 	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/flexible.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://img.ylznet.com/src/css/reset.css">
@@ -20,28 +21,28 @@
   
   <body ng-controller="actsList">
   	<header>
-  		<a class="icon_menu pull_left"><img src="img/list.png"/></a>
-  		<h1>暖星</h1>
-  		<a class="icon_location pull_right"><img src="img/location.png"/></a>
+  		<a class="icon_menu pull_left" href="feedback.jsp"></a>
+  		<h1>暖星社区-活动平台</h1>
+  		<a class="icon_location pull_right"></a>
   	</header>
-  	<div class="content">
-  		<div class="list" ng-repeat="acts in activities">
-  			<div class="list_date"><i ng-bind="acts[0].m_day"></i><span class="list_week" ng-bind="acts[0].w_day"></span></div>
+  	<div class="content" lists>
+		<div class="list" ng-repeat="acts in activities">
+  			<div class="list_date list_date_{{$index%4}}"><i ng-bind="acts[0].m_day"></i><span class="list_week" ng-bind="acts[0].w_day"></span></div>
   			<ul class="event_list">
   				<div ng-repeat="act in acts">
 	  				<li class="list_item">
-	  					<a href="detail.html">
-	  						<div class="cycle cycle_2" style="top:{{act.title.length/14*0.23+0.6}}rem;"></div>
+	  					<a href="detail.jsp?actid={{act.actid}}">
+	  						<div class="cycle cycle_{{$index%4}}" style="top:{{act.title.length/14*0.28+0.38}}rem;"></div>
 	  						<div class="list_date_time" style="line-height:{{act.title.length/14*0.5+1.2}}rem;" ng-bind="act.h_m"></div>
 	  						<div class="event_title">
 	  							<div class="title_content" ng-bind="act.title"></div>
 		  						<div class="img_list" ng-if="act.cover.length>0">
-		  							<img ng-repeat="cv in act.cover track by $index" ng-src="{{cv}}"/>
+		  							<img ng-if="$index>0" class="first_{{$index}}" ng-repeat="cv in act.cover track by $index" ng-src="{{cv}}"/>
 		  						</div>
 	  						</div>
 	  					</a>
-	  					<div class="zan pull_right" style="padding-top:{{act.title.length/14*0.23+0.25}}rem;">
-	  						<img src="img/heart.png"/>
+	  					<div class="zan pull_right" style="padding-top:{{act.title.length/14*0.24+0.31}}rem;">
+	  						<div class="zan_img"></div>
 		  					<div id="zan_num" ng-bind="act.thumb_up"></div>
 	  					</div>
 	  				</li>
@@ -50,7 +51,6 @@
   			</ul>
   		</div>
  
-
   	</div>
   <script type="text/javascript" src="js/zepto_1.1.3.js" ></script>
   <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
