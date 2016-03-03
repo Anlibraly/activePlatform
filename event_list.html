@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>暖星社区</title>
+    <meta http-equiv="keywords" content="孤独症">
+    <meta http-equiv="description" content="与孤独症相关的活动发布平台">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+    <!--SUI Mobile -->
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+	<style>
+		.mylink{
+			color: #3d4145;
+		}
+	</style>
+  </head>
+  
+  <body>
+	<div class="page-group">
+		<!--页面  page-current表示第一个页面  -->
+		<div class="page page-current" id="event-list">
+			<!-- 标题 -->
+			<header class="bar bar-nav">
+				<a href="#" class="icon icon-home pull-left open-panel"></a>
+				<h1 class="title">暖星社区</h1>
+			</header>
+			<!-- 页面内容区 -->
+			
+			<div class="content infinite-scroll" data-distance="40">
+				<div class="mylist">
+				
+				</div>
+				
+				<!-- 加载提示符 -->
+		        <div class="infinite-scroll-preloader">
+		            <div class="preloader"></div>
+		        </div>
+			</div>
+				
+		</div>
+	</div>
+
+	<!-- popup  -->
+	<div class="popup popup-about">
+		<!-- 标题 -->
+		<header class="bar bar-nav">
+			<a class="icon icon-left pull-left close-about"></a>
+			<h1 class="title">关于</h1>
+		</header>
+		<div class="content">
+		  	<div class="content-block">
+		    	<p>关于</p>
+		  	</div>
+		</div>
+	</div>
+	<div class="popup popup-feed">
+	  	<!-- 标题 -->
+		<header class="bar bar-nav">
+			<a class="icon icon-left pull-left close-feed"></a>
+			<h1 class="title">反馈</h1>
+		</header>
+		<div class="content">
+	    	<div style="margin:0;" class="list-block">
+	    		<textarea style="height:10rem;" name="feedcontent" placeholder="您的宝贵意见"></textarea>
+	    		<input style="border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;" type="text" name="feedcontact" placeholder="手机/QQ/邮箱等任何能联系到您的方式">
+	    		<input style="width:10rem;height:2rem;margin:1rem auto;" class="button button-round" type="button" value="提交">
+	    	</div>
+		</div>
+	</div>
+	<!-- panel  -->
+	<div class="panel-overlay"></div>
+	<!-- 左侧弹出菜单 -->
+	<div class="panel panel-left panel-reveal">
+		<div class="content-block">
+			<p><a href="http://bbs.asd-family.cn/?/m/ignore_ua_check-FALSE">社区</a></p>
+			<p><a href="#" class="open-feed">反馈</a></p>
+			<!-- <p><a href="#" class="open-about">关于</a></p> -->
+			<p>
+				<a href="#" class="close-panel">关闭</a>
+			</p>
+		</div>
+	</div>
+	<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+	<script>
+		$.init();
+		// 无限滚动加载flag
+	    var loading = false;
+	    // 最多可加载的条目
+	    var maxItems = 100;
+	
+	    // 每次加载添加多少条目
+	    var itemsPerLoad = 4;
+	
+	    function addItems(number, lastIndex) {
+	              // 生成新条目的HTML
+	              var html = '';
+	              for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+	                  html += '<a class="mylink" href="event_detail.html?id='+i+'"><div class="card"><div class="card-header">';
+	                  html += 'A+ware阅独行动'+'</div><div class="card-content"><div class="card-content-inner">';
+	                  html += '<img alt="A+ware阅独行动" src="./img/Aware.jpg" width="100%"><p>为了更及时的发现和干预，我们倡导所有3岁以下的婴幼儿都参与孤独症早期筛查</p>';
+	                  html += '</div></div><div class="card-footer"><a href="javascript:void(0);" class="link">赞(<span>88</span>)</a></div></div></a>';
+	              }
+	              // 添加新条目
+	              $('.infinite-scroll .mylist').append(html);
+	
+	          }
+	          //预先加载20条
+	      addItems(itemsPerLoad, 0);
+	
+	      // 上次加载的序号
+	
+	      var lastIndex = 4;
+	
+	      // 注册'infinite'事件处理函数
+	      $(document).on('infinite','.infinite-scroll',function() {
+	
+	          // 如果正在加载，则退出
+	          if (loading) return;
+	
+	          // 设置flag
+	          loading = true;
+	
+	          // 模拟1s的加载过程
+	          setTimeout(function() {
+	              // 重置加载flag
+	              loading = false;
+	
+	              if (lastIndex >= maxItems) {
+	                  // 加载完毕，则注销无限加载事件，以防不必要的加载
+	                  $.detachInfiniteScroll($('.infinite-scroll'));
+	                  // 删除加载提示符
+	                  $('.infinite-scroll-preloader').remove();
+	                  return;
+	              }
+	
+	              // 添加新条目
+	              addItems(itemsPerLoad, lastIndex);
+	              // 更新最后加载的序号
+	              lastIndex = $('.infinite-scroll .mylink .card').length;
+	              //容器发生改变,如果是js滚动，需要刷新滚动
+	              $.refreshScroller();
+	          }, 1000);
+	      });
+	      $(document).on('click','.open-about', function () {
+	      	$.closePanel();
+	      	$.popup('.popup-about');
+	      });
+	      $(document).on('click','.open-feed', function () {
+	      	$.closePanel();
+	      	$.popup('.popup-feed');
+	      });
+	       $(document).on('click','.close-about', function () {
+	      	$.openPanel();
+	      	$.closeModal('.popup-about');
+	      });
+	      $(document).on('click','.close-feed', function () {
+	      	$.openPanel();
+	      	$.closeModal('.popup-feed');
+	      });
+	</script>
+  </body>
+</html>

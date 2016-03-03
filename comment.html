@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myComment">
+  <head>
+    <title>暖星</title>
+    <meta http-equiv="keywords" content="孤独症">
+    <meta http-equiv="description" content="与孤独症相关的活动发布平台">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!--<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">-->
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+	<script type="text/javascript" src="js/zepto_1.1.3.js" ></script>
+  	<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/av-mini.js"></script>
+	<script src="js/comment.js"></script>
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://img.ylznet.com/src/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/event.css">
+	<link rel="stylesheet" type="text/css" href="css/toaster.css">
+	<link rel="stylesheet" type="text/css" href="css/comment.css">
+  </head>
+  
+  <body ng-controller="commentList">
+  	<header>
+  		<a class="icon_back pull_left"></a>
+  		<h1 style="border-bottom: 1px solid #dddddd;">活动评论</h1>
+  		<a class="icon_location pull_right"><img src="img/location.png"/></a>
+  	</header>
+  	<article class="comment">
+  		<section id="postComment">
+  			<textarea ng-model="cmt_content"></textarea>
+  			<input type="button" value="发布" class="inputBtn" ng-click="addComments()"/>
+  		</section>
+  		<section id="commentList">
+  			<div ng-repeat="cm in comments">
+	  			<p class="clearfix">
+	  				<span class="author">暖星{{cm.local}}手机网友<span>
+	  				<span class="rt">{{cm.comtime}}</span>
+	  			</p>
+	  			<p>{{cm.content}}</p>
+  			</div>		
+  		</section>
+  		<div ng-if="more" class="pageBtn" id="nextPage" ng-click="getComments()">查看更多评论</div>
+  	</article>
+ 
+
+  	</div>
+
+  </body>
+</html>

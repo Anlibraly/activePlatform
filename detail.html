@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>暖星</title>
+    <meta http-equiv="keywords" content="孤独症">
+    <meta http-equiv="description" content="与孤独症相关的活动发布平台">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!--<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">-->
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<script type="text/javascript" src="js/flexible.1.13.js" ></script>
+	<link rel="stylesheet" type="text/css" href="http://img.ylznet.com/src/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+	<style>
+		header{
+			position: relative;
+		}
+		header a{
+			display: block;
+		}
+		header h1{
+			font-size: 18px;
+			text-align: center;
+			padding: 0.32rem 0.267rem;
+		}
+		[data-dpr="2"] header h1{
+			font-size:36px ;
+		}
+		[data-dpr="3"] header h1{
+			font-size:54px ;
+		}
+		.pull_left{
+			float: left;
+		}
+		.pull_right{
+			float: right;
+		}
+		.icon_back{
+			position: absolute;
+		}
+		.icon_back img{
+			width: 0.347rem;
+			height: 0.587rem;
+			padding: 0.32rem 0.267rem;
+		}
+		.icon_zan{
+			position: absolute;
+			padding: 0.32rem 0.267rem;
+			right: 0;
+			top: 0;
+		}
+		.icon_zan img{
+			width: 0.613rem;
+			height: 0.547rem;
+		}
+		.detail_title{
+			font-size: 15px;
+			padding: 0.36rem 0.267rem;
+			border-bottom: 1px solid #F3F3F3;
+		}
+		[data-dpr="2"] .detail_title{
+			font-size:30px ;
+		}
+		[data-dpr="3"] .detail_title{
+			font-size:45px ;
+		}
+		.detail_time,.detail_location{
+			height: 1.71rem;
+			line-height: 1.71rem;
+			border-bottom: 1px solid #F3F3F3;
+			font-size: 14px;
+			color: #a8a8a8;
+			margin: 0 0.44rem;
+			padding-left:0.893rem ;
+			background-repeat: no-repeat;
+    	background-position: left center;
+		}
+		[data-dpr="2"] .detail_time,[data-dpr="2"] .detail_location{
+			font-size:28px ;
+			background-size: initial;
+		}
+		[data-dpr="3"] .detail_time,[data-dpr="3"] .detail_location{
+			font-size:42px ;
+		}
+		.detail_location{
+			background-size: 21px;
+			background-image: url(img/location_active.png);
+		}
+		.detail_time{
+			background-size: 20px;
+			background-image: url(img/clock.png);
+		}
+		.detail_time img,.detail_location img{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.detail_content{
+			font-size: 15px;
+			padding: 0.4rem 0.32rem;
+			display: inline-block;
+		}
+		[data-dpr="2"] .detail_content{
+			font-size:30px ;
+		}
+		[data-dpr="3"] .detail_content{
+			font-size:45px ;
+		}
+		.gap{
+			height: 0.267rem;
+			background-color: #ebebeb;
+			border-top:1px solid #d2d2d2 ;
+		}
+	</style>
+  </head>
+  
+  <body>
+  	<header>
+  		<a class="icon_back pull_left"><img src="img/back.png"/></a>
+  		<h1>暖星</h1>
+  		<a class="icon_zan pull_right"><img src="img/heart_before.png"/></a>
+  	</header>
+  	<div class="content">
+	    <!-- Swiper -->
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide"><img width="100%" src="img/Aware_1080.jpg"/></div>
+	            <div class="swiper-slide"><img width="100%" src="img/Aware_1080.jpg"/></div>
+	            <div class="swiper-slide"><img width="100%" src="img/Aware_1080.jpg"/></div>
+	        </div>
+	        <div class="swiper-pagination"></div>
+	    </div>
+	    <!-- Swiper End-->
+	    
+	    <h3 class="detail_title">"孤独症的人生"——第三期heArtS Gloabal View心艺界</h3>
+	    <div class="detail_time">
+	    	<span>2016/03/22 14:00-16:00</span>
+	    </div>
+	    <div class="detail_location">
+	    	<span>上海长宁区金钟路968号 凌空SOHO</span>
+	    </div>
+	    <div class="gap"></div>
+    	<div class="detail_content">在关爱心智残障人士的艺术世界里，我们并不孤独；心公艺看世界，带我们走进世界各地的特殊群体与原生艺术世界；分享会每月举办，面向全体心公艺成员，教员和星月银河等志愿者，特殊全体家庭成员，相关类型NGO，以及社会各界共同关注心智残障者的伙伴们</div>
+  		<div class="gap"></div>
+  	</div>
+  	<script type="text/javascript" src="js/swiper.min.js" ></script>
+  	<script type="text/javascript" src="js/zepto_1.1.3.js" ></script>
+  	<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+  	<script>
+  		$(document).ready(function(){
+  			var ip=returnCitySN["cip"];
+		    var swiper = new Swiper('.swiper-container', {
+		        pagination: '.swiper-pagination',
+		        paginationClickable: true
+		    });
+		    
+		    $('.icon_back').click(function(){
+		    	window.history.back();
+		    });
+  		});
+    </script>
+  </body>
+</html>
